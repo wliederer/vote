@@ -12,7 +12,7 @@ import lombok.Data;
 public class Poll {
 	
 	@Id
-	private String id;
+	private String _id;
 	private String question;
 	private ArrayList<Pick> picks;
 	
