@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vote.model.Poll;
 import com.vote.service.PollService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins="*")
 public class VoteController {
@@ -41,7 +43,7 @@ public class VoteController {
 	}
 	
 	@PostMapping("/polls")
-	public ResponseEntity<Poll> createPoll(@RequestBody Poll poll){
+	public ResponseEntity<Poll> createPoll(@Valid @RequestBody Poll poll){
 		 poll = pollService.createPoll(poll);
 		return new ResponseEntity<>(poll,HttpStatus.CREATED);
 	}
