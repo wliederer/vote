@@ -33,5 +33,9 @@ public class PollService {
 	public Optional<Poll> findById(String id) {
 		return pollRepository.findById(id);
 	}
+	
+	public List<Poll> findByQuestion(String question) {
+		return pollRepository.findByQuestionIgnoreCase(question);
+	}
 
 }

@@ -2,6 +2,7 @@ package com.vote.controller;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vote.model.Poll;
@@ -24,9 +26,9 @@ import jakarta.validation.Valid;
 @RestController
 @CrossOrigin(origins="*")
 @Validated
-public class VoteController {
+public class PollController {
 	
-	private static final Logger log = LoggerFactory.getLogger(VoteController.class);
+	private static final Logger log = LoggerFactory.getLogger(PollController.class);
 	
 	@Autowired
 	private PollService pollService;
@@ -34,6 +36,12 @@ public class VoteController {
 	@GetMapping("/polls")
 	public ResponseEntity<List<Poll>> getAllPolls() {
 		List<Poll> polls = pollService.getAll();
+		return new ResponseEntity<>(polls,HttpStatus.OK);
+	}
+	
+	@GetMapping("/polls/search")
+	public ResponseEntity<List<Poll>> getSearchPolls(@RequestParam("question") String question) {
+		List<Poll> polls = pollService.findByQuestion(question);
 		return new ResponseEntity<>(polls,HttpStatus.OK);
 	}
 	

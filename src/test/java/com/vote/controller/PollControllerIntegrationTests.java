@@ -24,7 +24,7 @@ public class PollControllerIntegrationTests {
 	private PollService pollService;
 	
 	@Autowired
-	VoteController voteController;
+	PollController voteController;
 	
 	@Autowired
 	private  MockMvc mockMvc;
