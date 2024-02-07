@@ -14,7 +14,7 @@ import com.vote.auth.ApiKeyAuthenticationFilter;
 
 @TestConfiguration
 @EnableWebSecurity
-public class TestSecurityConfig {
+public class TestSecurityConfig  {
 
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

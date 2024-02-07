@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class AuthenticationService {
 
 	private static final String AUTH_TOKEN_HEADER_NAME = "X-API-KEY";
-	private static final String AUTH_TOKEN = System.getProperty("API_KEY");
+	private static final String AUTH_TOKEN = System.getenv("API_KEY") !=null ? System.getenv("API_KEY") : "wills-world";
 	
 
     public static Authentication getAuthentication(HttpServletRequest request) {

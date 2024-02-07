@@ -64,6 +64,7 @@ public class PollController {
 	
 	@PutMapping("/polls/{id}")
 	public ResponseEntity<Poll> updatePoll(@PathVariable String id,@RequestBody Poll poll){
+		log.info("updating poll " + poll);
 		 poll = pollService.updatePoll(poll);
 		return new ResponseEntity<>(poll,HttpStatus.OK);
 	}
